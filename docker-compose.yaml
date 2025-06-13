@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   keycloak:
@@ -7,29 +7,28 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_DB=mysql
-      - KC_DB_URL=jdbc:mysql://db:3306/keycloak
-      - KC_DB_USERNAME=root
-      - KC_DB_PASSWORD=root
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: mysql
+      KC_DB_URL: jdbc:mysql://db:3306/keycloak
+      KC_DB_USERNAME: root
+      KC_DB_PASSWORD: root
     depends_on:
       db:
         condition: service_healthy
-  
+
   db:
-      image: mysql:8.0.30-debian
-      volumes:
-        - ./.docker/dbdata:/var/lib/mysql
-      environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=keycloak
-      healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-        interval: 10s
-        timeout: 10s
-        retries: 3
-    
+    image: mysql:8.0.30-debian
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-
-    
+volumes:
+  mysql_data:
