@@ -4,10 +4,10 @@ Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker
 
 ## 📦 Tecnologias
 
-- [Keycloak](https://www.keycloak.org/) - Identity and Access Management
-- [Docker](https://www.docker.com/) - Containerização
-- [MySQL](https://www.mysql.com/) - Banco de dados relacional
-- [Docker Compose](https://docs.docker.com/compose/) - Orquestração de containers
+- [Keycloak](https://www.keycloak.org/)
+- [Docker](https://www.docker.com/)
+- [MySQL](https://www.mysql.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ---
 
@@ -22,7 +22,6 @@ Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker
 ## Como rodar o projeto
 
 - Suba o container
-
   - docker-compose up -d
 
 - Acesse o Keycloak no navegador
