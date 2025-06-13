@@ -27,6 +27,7 @@ Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker
 
 - Acesse o Keycloak no navegador
   - http://localhost:8080
+
 - Faça login com o administrador
   - Usuário: admin
   - Senha: admin
