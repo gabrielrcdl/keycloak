@@ -1,0 +1,32 @@
+# 🚀 Estudo: Keycloak + Docker + MySQL
+
+Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker, com o banco de dados MySQL, ambos rodando em containers.
+
+## 📦 Tecnologias
+
+- [Keycloak](https://www.keycloak.org/) - Identity and Access Management
+- [Docker](https://www.docker.com/) - Containerização
+- [MySQL](https://www.mysql.com/) - Banco de dados relacional
+- [Docker Compose](https://docs.docker.com/compose/) - Orquestração de containers
+
+---
+
+## ⚙️ Estrutura dos Containers
+
+- **Keycloak**: rodando na porta `8080`
+- **MySQL**: banco persistente utilizado pelo Keycloak
+- **Volumes**: persistência dos dados do MySQL
+
+---
+
+## Como rodar o projeto
+
+- Suba o container
+
+  - docker-compose up -d
+
+- Acesse o Keycloak no navegador
+  - http://localhost:8080
+- Faça login com o administrador
+  - Usuário: admin
+  - Senha: admin
