@@ -16,6 +16,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - network
 
   db:
     image: mysql:8.0.30-debian
@@ -29,6 +31,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - network
 
 volumes:
   mysql_data:
+
+
+networks:
+  network:
+    external: true
