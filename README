@@ -1,32 +1,43 @@
 # 🚀 Estudo: Autenticação com Keycloak 
 
-Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker, com o banco de dados MySQL, ambos rodando em containers.
+Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker, com o banco de dados MySQL, ambos rodando em containers docker.
 
 ## 📦 Tecnologias
 
 - [Keycloak](https://www.keycloak.org/)
 - [Docker](https://www.docker.com/)
 - [MySQL](https://www.mysql.com/)
+- [Express](https://expressjs.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
+- [Vite](https://vite.dev/guide/) 
 
 ---
 
 ## ⚙️ Estrutura dos Containers
 
 - **Keycloak**: rodando na porta `8080`
-- **MySQL**: banco persistente utilizado pelo Keycloak
+- **MySQL**: banco utilizado pelo Keycloak
 - **Volumes**: persistência dos dados do MySQL
+- **Express**: para exibir exemplo do authorization code flow
+- **Vite(react)**: para exibir exemplo do implicit flow
 
 ---
 
 ## Como rodar o projeto
 
-- Suba o container
+- Clone o projeto
+
+- Rode npm install
+
+- Suba o container keycloak com o compose que se encontra na raiz do projeto, logo apos dentro da pasta auth-flow suba os containers com o vite e express, com o comando:
   - docker-compose up -d
 
 - Acesse o Keycloak no navegador
   - http://localhost:8080
 
-- Faça login com o administrador
+- Acessar express ou react(express contem exemplo do authorization-code-flow e react contem exemplo do implict flow)
+  - http://localhost:3000
+
+- Faça login com o administrador, para configurar realms, grupos, usuários, etc. Explore!
   - Usuário: admin
   - Senha: admin
