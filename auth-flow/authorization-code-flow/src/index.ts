@@ -1,3 +1,5 @@
+// ATENÇÂO: O foco deste exemplo é demonstrar o fluxo e a base de autorização com o Keycloak usando o Authorization Code Flow, não levando em consideração as boas práticas de tipagem do TypeScript.
+
 import express from "express";
 import crypto from "crypto";
 import session from "express-session";
@@ -14,9 +16,12 @@ app.use(
 
 app.get("/login", (req, res) => {
   const nonce = crypto.randomBytes(16).toString("base64");
+  const state = crypto.randomBytes(16).toString("base64");
 
   //@ts-ignore
   req.session.nonce = nonce;
+  //@ts-ignore
+  req.session.state = state;
   req.session.save(() => {
     const loginUrlParams = new URLSearchParams({
       response_type: "code",
@@ -24,6 +29,7 @@ app.get("/login", (req, res) => {
       redirect_uri: "http://localhost:3000/callback",
       scope: "openid",
       nonce,
+      state,
     });
 
     const url = `http://localhost:8080/realms/fullcycle-realm/protocol/openid-connect/auth?${loginUrlParams.toString()}`;
@@ -34,6 +40,11 @@ app.get("/login", (req, res) => {
 
 //@ts-expect-error - type mismatch
 app.get("/callback", async (req, res) => {
+  //@ts-expect-error - type mismatch
+  if (req.query.state !== req.session.state) {
+    return res.status(401).json({ error: "Unauthenticated" });
+  }
+
   const bodyParams = new URLSearchParams({
     grant_type: "authorization_code",
     client_id: "fullcycle-client",
