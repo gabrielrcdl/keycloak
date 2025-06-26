@@ -1,6 +1,6 @@
 # 🚀 Estudo: Autenticação com Keycloak 
 
-Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker, com o banco de dados MySQL, ambos rodando em containers docker.
+Este projeto tem como objetivo estudar e configurar o Keycloak utilizando Docker, React, Express com o banco de dados MySQL, ambos rodando em containers docker. Projeto para fins ditáticos, não utilize em produção.
 
 ## 📦 Tecnologias
 
